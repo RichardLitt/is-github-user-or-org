@@ -1,0 +1,48 @@
+{
+  "name": "get-github-user",
+  "version": "0.0.0",
+  "description": "Get GitHub user information from just a username",
+  "license": "MIT",
+  "repository": "RichardLitt/get-github-user",
+  "author": {
+    "name": "Richard Littauer",
+    "email": "richard.littauer@gmail.com",
+    "url": "burntfen.com"
+  },
+  "bin": "cli.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "lint": "standard",
+    "test": "standard && ava"
+  },
+  "files": [
+    "index.js",
+    "cli.js"
+  ],
+  "keywords": [
+    "cli-app",
+    "cli",
+    "github",
+    "users",
+    "api",
+    "user",
+    "username"
+  ],
+  "dependencies": {
+    "bluebird": "^3.1.1",
+    "is-array": "^1.0.1",
+    "meow": "^3.6.0",
+    "octokat": "^0.4.15"
+  },
+  "devDependencies": {
+    "ava": "^0.10.0",
+    "standard": "^5.4.1"
+  },
+  "standard": {
+    "ignores": [
+      "test.js"
+    ]
+  }
+}
