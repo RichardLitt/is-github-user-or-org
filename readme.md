@@ -9,6 +9,7 @@
 $ npm install --save get-github-user
 ```
 
+You also need to get a GitHub application token: https://github.com/settings/tokens. Provide it in the CLI or set it as `$GITHUB_OGN_TOKEN` somewhere in your bash_profile.
 
 ## Usage
 
