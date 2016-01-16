@@ -21,6 +21,10 @@ module.exports = function (users) {
   }).then(function (users) {
     return users
   }).catch(function (err) {
-    console.log('Could not get GitHub user', err)
+    if (err.status === 404) {
+      return []
+    } else {
+      throw ('Could not get GitHub user', err)
+    }
   })
 }
