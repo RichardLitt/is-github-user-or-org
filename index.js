@@ -1,13 +1,15 @@
 'use strict'
 
 const Octokat = require('octokat')
-const octo = new Octokat({
-  token: process.env.GITHUB_OGN_TOKEN
-})
 const Promise = require('bluebird')
 const isArray = require('is-array')
+var octo
 
-module.exports = function (users) {
+module.exports = function (users, token) {
+  octo = new Octokat({
+    token: token || process.env.GITHUB_OGN_TOKEN
+  })
+
   if (typeof users !== 'string') {
     if (!isArray(users)) {
       throw new TypeError('Expected a string or an array')
