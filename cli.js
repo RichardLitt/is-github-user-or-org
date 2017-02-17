@@ -12,21 +12,33 @@ const authOptions = {
   scope: ['user']
 }
 
-var cli = meow([`
+
+const cli = meow([`
   Usage
     $ get-github-user [input]
+
+  Options
+    -t, --token A token
 
   Examples
     $ get-github-user RichardLitt
     [{ login: 'RichardLitt',  ... }]
     $ get-github-user RichardLitt jbenet
     [{...}, {...}]
-`])
-
-Promise.try(function () {
-  return ghauth(authOptions)
-}).then((authData) => {
-  return getGithubUser(cli.input, authData.token)
-}).then(function (response) {
-  console.log(response)
+`], {
+  alias: {
+    t: 'token'
+  }
 })
+
+if (cli.flags.token) {
+  getGithubUser(cli.input, { token: cli.flags.token })
+  .then((response) => console.log(response))
+  .catch((err) => console.log('Unable to use passed token', err))
+} else {
+  Promise.try(() => ghauth(authOptions))
+  .then((authData) => getGithubUser(cli.input, authData))
+  .then((response) => console.log(response))
+  .catch((err) => console.log('Unable to use ghAuth', err))
+
+}

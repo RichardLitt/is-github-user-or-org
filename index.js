@@ -5,9 +5,9 @@ const Promise = require('bluebird')
 const isArray = require('is-array')
 var octo
 
-module.exports = function (users, token) {
+module.exports = function (users, opts) {
   octo = new Octokat({
-    token: token || process.env.GITHUB_OGN_TOKEN
+    token: opts.token || process.env.GITHUB_OGN_TOKEN
   })
 
   if (typeof users !== 'string') {
