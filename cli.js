@@ -12,7 +12,6 @@ const authOptions = {
   scope: ['user']
 }
 
-
 const cli = meow([`
   Usage
     $ get-github-user [input]
@@ -40,5 +39,4 @@ if (cli.flags.token) {
   .then((authData) => getGithubUser(cli.input, authData))
   .then((response) => console.log(response))
   .catch((err) => console.log('Unable to use ghAuth', err))
-
 }
