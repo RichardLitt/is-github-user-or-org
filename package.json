@@ -1,6 +1,6 @@
 {
   "name": "get-github-user",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Get GitHub user information from just a username",
   "license": "MIT",
   "repository": "RichardLitt/get-github-user",
@@ -47,7 +47,7 @@
     ]
   },
   "coordinates": [
-    78.22770416956705,
-    15.632953321874993
+    45.5213429,
+    -73.5746935
   ]
 }
