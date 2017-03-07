@@ -1,9 +1,9 @@
 {
-  "name": "get-github-user",
-  "version": "0.1.1",
-  "description": "Get GitHub user information from just a username",
+  "name": "is-github-user-or-org",
+  "version": "1.0.0",
+  "description": "Determines whether a GitHub profile is a User or an Organization",
   "license": "MIT",
-  "repository": "RichardLitt/get-github-user",
+  "repository": "RichardLitt/is-github-user-or-org",
   "author": {
     "name": "Richard Littauer",
     "email": "richard.littauer@gmail.com",
@@ -15,7 +15,7 @@
   },
   "scripts": {
     "lint": "standard",
-    "test": "standard && ava"
+    "test": "ava"
   },
   "files": [
     "index.js",
@@ -28,10 +28,13 @@
     "users",
     "api",
     "user",
-    "username"
+    "username",
+    "organization",
+    "org"
   ],
   "dependencies": {
     "bluebird": "^3.1.1",
+    "get-github-user": "^0.1.1",
     "ghauth": "^3.2.0",
     "is-array": "^1.0.1",
     "meow": "^3.6.0",

@@ -1,56 +1,54 @@
-# get-github-user [![Build Status](https://travis-ci.org/RichardLitt/get-github-user.svg?branch=master)](https://travis-ci.org/RichardLitt/get-github-user)
+# is-github-user-or-org [![Build Status](https://travis-ci.org/RichardLitt/is-github-user-or-org.svg?branch=master)](https://travis-ci.org/RichardLitt/is-github-user-or-org)
 
-> Get GitHub user information from just a username
-
+> Determines whether a GitHub profile is a User or an Organization
 
 ## Install
 
 ```
-$ npm install --save get-github-user
+$ npm install --save is-github-user-or-org
 ```
 
-You also need to get a GitHub application token: https://github.com/settings/tokens. Provide it in the CLI or set it as `$GITHUB_OGN_TOKEN` somewhere in your bash_profile.
+You also need to get a GitHub application token: https://github.com/settings/tokens. Provide it in the CLI or set it as `$GITHUB_TOKEN` somewhere in your bash_profile.
 
 ## Usage
 
 ```js
-const getGithubUser = require('get-github-user');
+const isGithubUserOrOrg = require('is-github-user-or-org')
 
-getGithubUser('RichardLitt');
-//=> [{login: 'RichardLitt', ...}]
+isGithubUserOrOrg('RichardLitt')
+//=> 'User'
 ```
 
 
 ## API
 
-### getGithubUser(input)
+### isGithubUserOrOrg(input)
 
 #### input
 
-Type: `string` or `array`
+Type: `string`
 
-The user or array of users you want user objects for.
+The user or organization you want to check the type of
 
 ## CLI
 
 ```
-$ npm install --global get-github-user
+$ npm install --global is-github-user-or-org
 ```
 
 ```
-$ get-github-user --help
+$ is-github-user-or-org --help
 
   Usage
-    get-github-user [input]
+    is-github-user-or-org [input]
 
   Examples
-    $ get-github-user RichardLitt
-    [{ login: 'RichardLitt', ... }]
-    $ get-github-user RichardLitt jbenet
-    [{ login: 'RichardLitt', ...}, { login: 'jbenet', ...}]'
+    $ is-github-user-or-org RichardLitt
+    User
+    $ is-github-user-or-org OpenSourceDesign
+    Organization
 ```
-
 
 ## License
 
-MIT © [Richard Littauer](http://burntfen.com)
+[MIT](license) © 2017 [Richard Littauer](http://burntfen.com)

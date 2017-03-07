@@ -3,26 +3,18 @@ import fn from './'
 
 test(t => {
   return fn('RichardLitt').then(result => {
-    t.is(result[0].login, 'RichardLitt')
+    t.is(result, 'User')
   })
 })
 
 test(t => {
-  return fn('wkjhfw9a987sya323jkbsd7822dfsa').then(result => {
-    t.same(result, [])
+  return fn('OpenSourceDesign').then(result => {
+    t.same(result, 'Organization')
   })
 })
 
-test(t => {
-  return fn(['wkjhfw9a987sya323jkbsd7822dfsa', 'RichardLitt']).then(result => {
-    t.same(result, [])
-  })
-})
-
-test(t => {
-  return fn(['RichardLitt', 'sindresorhus']).then(result => {
-    t.is(result[0].login, 'RichardLitt')
-    t.is(result[1].login, 'sindresorhus')
-  })
-})
-
+test('throws', t => {
+    return fn('wkjhfw9a987sya323jkbsd7822dfsa').catch((error) => {
+      t.is(error.message, 'Not a GitHub user.');
+    })
+});

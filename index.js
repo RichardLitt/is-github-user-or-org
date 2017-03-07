@@ -3,30 +3,27 @@
 const Octokat = require('octokat')
 const Promise = require('bluebird')
 const isArray = require('is-array')
+const getGithubUser = require('get-github-user')
 var octo
 
-module.exports = function (users, opts) {
+module.exports = function (user, opts) {
+  var opts = opts || {}
+
   octo = new Octokat({
-    token: opts && opts.token || process.env.GITHUB_OGN_TOKEN
+    token: opts.token || process.env.GITHUB_OGN_TOKEN
   })
 
-  if (typeof users !== 'string') {
-    if (!isArray(users)) {
-      throw new TypeError('Expected a string or an array')
-    }
-  } else {
-    users = [users]
+  if (typeof user !== 'string') {
+    throw new TypeError('Expected a string.')
   }
 
-  return Promise.map(users, function (user) {
-    return octo.users(user).fetch()
-  }).then(function (users) {
-    return users
-  }).catch(function (err) {
-    if (err.status === 404) {
-      return []
+  return getGithubUser(user).then((res) => {
+    if (res && res[0] && res[0].type) {
+      return res[0].type
     } else {
-      throw ('Could not get GitHub user', err)
+      throw new Error
     }
+  }).catch(function (err) {
+    throw new Error('Not a GitHub user.')
   })
 }

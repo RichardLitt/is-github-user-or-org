@@ -6,24 +6,24 @@ const getGithubUser = require('./')
 const Promise = require('bluebird')
 const ghauth = Promise.promisify(require('ghauth'))
 const authOptions = {
-  configName: 'getGithubUser',
-  note: 'Get GitHub user information from just a username',
+  configName: 'isGitHubUserOrOrg',
+  note: 'Determines whether a GitHub profile is a User or an Organization',
   userAgent: 'ghUser',
   scope: ['user']
 }
 
 const cli = meow([`
   Usage
-    $ get-github-user [input]
+    $ is-github-user-or-org <input>
 
   Options
     -t, --token A token
 
   Examples
     $ get-github-user RichardLitt
-    [{ login: 'RichardLitt',  ... }]
-    $ get-github-user RichardLitt jbenet
-    [{...}, {...}]
+    User
+    $ get-github-user OpenSourceDesign
+    Organization
 `], {
   alias: {
     t: 'token'
@@ -31,12 +31,12 @@ const cli = meow([`
 })
 
 if (cli.flags.token) {
-  getGithubUser(cli.input, { token: cli.flags.token })
+  getGithubUser(cli.input[0], { token: cli.flags.token })
   .then((response) => console.log(response))
   .catch((err) => console.log('Unable to use passed token', err))
 } else {
   Promise.try(() => ghauth(authOptions))
-  .then((authData) => getGithubUser(cli.input, authData))
+  .then((authData) => getGithubUser(cli.input[0], authData))
   .then((response) => console.log(response))
   .catch((err) => console.log('Unable to use ghAuth', err))
 }
