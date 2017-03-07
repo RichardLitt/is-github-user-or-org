@@ -1,8 +1,6 @@
 'use strict'
 
 const Octokat = require('octokat')
-const Promise = require('bluebird')
-const isArray = require('is-array')
 const getGithubUser = require('get-github-user')
 var octo
 

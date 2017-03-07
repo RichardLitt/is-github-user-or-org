@@ -3,8 +3,8 @@
 
 const meow = require('meow')
 const getGithubUser = require('./')
-const Promise = require('bluebird')
-const ghauth = Promise.promisify(require('ghauth'))
+const pify = require('pify');
+const ghauth = pify(require('ghauth'))
 const authOptions = {
   configName: 'isGitHubUserOrOrg',
   note: 'Determines whether a GitHub profile is a User or an Organization',
@@ -35,7 +35,7 @@ if (cli.flags.token) {
   .then((response) => console.log(response))
   .catch((err) => console.log('Unable to use passed token', err))
 } else {
-  Promise.try(() => ghauth(authOptions))
+  ghauth(authOptions)
   .then((authData) => getGithubUser(cli.input[0], authData))
   .then((response) => console.log(response))
   .catch((err) => console.log('Unable to use ghAuth', err))
