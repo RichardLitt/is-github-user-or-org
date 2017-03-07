@@ -1,6 +1,6 @@
 {
   "name": "is-github-user-or-org",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Determines whether a GitHub profile is a User or an Organization",
   "license": "MIT",
   "repository": "RichardLitt/is-github-user-or-org",
@@ -49,7 +49,7 @@
     ]
   },
   "coordinates": [
-    45.5191926,
-    -73.57888609999999
+    45.51916929999999,
+    -73.5789234
   ]
 }
