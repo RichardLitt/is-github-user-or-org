@@ -10,7 +10,7 @@ module.exports = function (user, opts) {
   var opts = opts || {}
 
   octo = new Octokat({
-    token: opts.token || process.env.GITHUB_OGN_TOKEN
+    token: opts.token || process.env.GITHUB_TOKEN
   })
 
   if (typeof user !== 'string') {
