@@ -1,5 +1,7 @@
 # is-github-user-or-org [![Build Status](https://travis-ci.org/RichardLitt/is-github-user-or-org.svg?branch=master)](https://travis-ci.org/RichardLitt/is-github-user-or-org)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/RichardLitt/is-github-user-or-org.svg)](https://greenkeeper.io/)
+
 > Determines whether a GitHub profile is a User or an Organization
 
 ## Install
