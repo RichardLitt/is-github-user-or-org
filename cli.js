@@ -18,6 +18,7 @@ const cli = meow([`
 
   Options
     -t, --token A token
+    -e, --endpoint A GitHub endpoint (for Enterprise)
 
   Examples
     $ get-github-user RichardLitt
@@ -26,12 +27,14 @@ const cli = meow([`
     Organization
 `], {
   alias: {
-    t: 'token'
+    t: 'token',
+    e: 'endpoint',
+    rootURL: 'endpoint'
   }
 })
 
 if (cli.flags.token) {
-  getGithubUser(cli.input[0], { token: cli.flags.token })
+  getGithubUser(cli.input[0], { token: cli.flags.token, endpoint: cli.flags.endpoint })
   .then((response) => console.log(response))
   .catch((err) => console.log('Unable to use passed token', err))
 } else {

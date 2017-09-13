@@ -6,21 +6,27 @@ var octo
 
 module.exports = function (user, opts) {
   var opts = opts || {}
+  // Because Octokat is different than gh-get, and I forget which I use
+  if (!opts.endpoint && opts.rootURL) {
+    opts.endpoint = opts.rootURL
+  }
   const token = opts.token || process.env.GITHUB_TOKEN
 
-  octo = new Octokat({token})
+
+  octo = new Octokat({token, rootURL: opts.endpoint})
 
   if (typeof user !== 'string') {
     throw new TypeError('Expected a string.')
   }
 
-  return getGithubUser(user, {token}).then((res) => {
+  return getGithubUser(user, {token, rootURL: opts.endpoint}).then((res) => {
     if (res && res[0] && res[0].type) {
       return res[0].type
-    } else {
-      throw new Error
     }
   }).catch(function (err) {
+    if (err.json.message === 'Bad credentials') {
+      throw new Error('Bad credentials.')
+    }
     throw new Error('Not a GitHub user.')
   })
 }

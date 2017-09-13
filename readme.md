@@ -30,6 +30,18 @@ Type: `string`
 
 The user or organization you want to check the type of
 
+#### token
+
+Type: token
+
+The GitHub personal access token.
+
+#### endpoint
+
+Type: `string`
+
+The GitHub enterprise endpoint.
+
 ## CLI
 
 ```
@@ -40,12 +52,16 @@ $ npm install --global is-github-user-or-org
 $ is-github-user-or-org --help
 
   Usage
-    is-github-user-or-org [input]
+    $ is-github-user-or-org <input>
+
+  Options
+    -t, --token A token
+    -e, --endpoint A GitHub endpoint (for Enterprise)
 
   Examples
-    $ is-github-user-or-org RichardLitt
+    $ get-github-user RichardLitt
     User
-    $ is-github-user-or-org OpenSourceDesign
+    $ get-github-user OpenSourceDesign
     Organization
 ```
 
