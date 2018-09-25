@@ -27,18 +27,18 @@ test('Correctly uses the rootURL endpoint alias', t => {
 
 test('Throws if there is a bad endpoint', t => {
   return fn('OpenSourceDesign', {endpoint: 'https://fail'}).catch((error) => {
-    t.is(error.message, 'Not a GitHub user.');
+    t.is(error.message, 'Not a GitHub user.')
   })
-});
+})
 
 test('Throws if there is a bad token', t => {
-  return fn('OpenSourceDesign', {token: 'https://fail'}).catch((error) => {
-    t.is(error.message, 'Bad credentials.');
+  return fn('OpenSourceDesign', {token: 'thisisnotatoken'}).catch((error) => {
+    t.is(error.message, 'Bad credentials.')
   })
-});
+})
 
 test('Throws if someone is not a user', t => {
   return fn('wkjhfw9a987sya323jkbsd7822dfsa').catch((error) => {
-    t.is(error.message, 'Not a GitHub user.');
+    t.is(error.message, 'Not a GitHub user.')
   })
-});
+})

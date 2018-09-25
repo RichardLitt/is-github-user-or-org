@@ -3,7 +3,7 @@
 
 const meow = require('meow')
 const getGithubUser = require('./')
-const pify = require('pify');
+const pify = require('pify')
 const ghauth = pify(require('ghauth'))
 const authOptions = {
   configName: 'isGitHubUserOrOrg',

@@ -36,7 +36,6 @@
     "get-github-user": "^0.2.1",
     "ghauth": "^3.2.0",
     "meow": "^3.6.0",
-    "octokat": "^0.9.2",
     "pify": "^2.3.0"
   },
   "devDependencies": {
