@@ -1,19 +1,14 @@
 'use strict'
 
-const Octokat = require('octokat')
 const getGithubUser = require('get-github-user')
-var octo
 
 module.exports = function (user, opts) {
-  var opts = opts || {}
+  opts = opts || {}
   // Because Octokat is different than gh-get, and I forget which I use
   if (!opts.endpoint && opts.rootURL) {
     opts.endpoint = opts.rootURL
   }
   const token = opts.token || process.env.GITHUB_TOKEN
-
-
-  octo = new Octokat({token, rootURL: opts.endpoint})
 
   if (typeof user !== 'string') {
     throw new TypeError('Expected a string.')
