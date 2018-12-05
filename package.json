@@ -33,19 +33,14 @@
     "org"
   ],
   "dependencies": {
-    "get-github-user": "^0.2.1",
+    "get-github-user": "^1.1.0",
     "ghauth": "^3.2.0",
     "meow": "^3.6.0",
     "pify": "^2.3.0"
   },
   "devDependencies": {
-    "ava": "^0.10.0",
-    "standard": "^5.4.1"
-  },
-  "standard": {
-    "ignores": [
-      "test.js"
-    ]
+    "ava": "^0.25.0",
+    "standard": "^12.0.1"
   },
   "coordinates": [
     45.51916929999999,

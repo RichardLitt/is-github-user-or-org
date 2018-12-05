@@ -14,14 +14,18 @@ module.exports = function (user, opts) {
     throw new TypeError('Expected a string.')
   }
 
-  return getGithubUser(user, {token, rootURL: opts.endpoint}).then((res) => {
+  return getGithubUser(user, { token, rootURL: opts.endpoint }).then((res) => {
     if (res && res[0] && res[0].type) {
       return res[0].type
     }
-  }).catch(function (err) {
-    if (err.json.message === 'Bad credentials') {
-      throw new Error('Bad credentials.')
+    if (res && res.length == 0) {
+      return `@${user} is not a valid GitHub account.`
     }
-    throw new Error('Not a GitHub user.')
+  }).catch((err) => {
+    if (err.message.indexOf('Bad credentials') !== -1) {
+      throw new Error('Bad credentials.')
+    } else {
+      throw new Error(`Unable to get GitHub user type for @${user}.`)
+    }
   })
 }
