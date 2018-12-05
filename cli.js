@@ -3,7 +3,7 @@
 
 const meow = require('meow')
 const getGithubUser = require('./')
-const pify = require('pify');
+const pify = require('pify')
 const ghauth = pify(require('ghauth'))
 const authOptions = {
   configName: 'isGitHubUserOrOrg',
@@ -35,11 +35,11 @@ const cli = meow([`
 
 if (cli.flags.token) {
   getGithubUser(cli.input[0], { token: cli.flags.token, endpoint: cli.flags.endpoint })
-  .then((response) => console.log(response))
-  .catch((err) => console.log('Unable to use passed token', err))
+    .then((response) => console.log(response))
+    .catch((err) => console.log('Unable to use passed token', err))
 } else {
   ghauth(authOptions)
-  .then((authData) => getGithubUser(cli.input[0], authData))
-  .then((response) => console.log(response))
-  .catch((err) => console.log('Unable to use ghAuth', err))
+    .then((authData) => getGithubUser(cli.input[0], authData))
+    .then((response) => console.log(response))
+    .catch((err) => console.log('Unable to use ghAuth', err))
 }
